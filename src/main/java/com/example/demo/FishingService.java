@@ -18,7 +18,25 @@ public class FishingService {
         return fishList;
     }
 
-    public int fishCount() {
+    public int getFishCount() {
         return fishList.size();
+    }
+
+    public List<Fish> getBiggestFish(int k) {
+        if (k > fishList.size()) {
+            k = fishList.size();
+        }
+        if (k <= 0) {
+            return new ArrayList<>();
+        }
+
+        List<Fish> list = new ArrayList<>(fishList);
+        list.sort((a, b) -> Double.compare(b.getWeight(), a.getWeight()));
+
+        List<Fish> biggestFish = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            biggestFish.add(list.get(i));
+        }
+        return biggestFish;
     }
 }

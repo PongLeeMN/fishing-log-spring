@@ -3,6 +3,7 @@ package com.example.demo;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,6 +21,11 @@ public class FishingController {
 
     @GetMapping("/fish/count")
     public int getFishCount() {
-        return fishingService.fishCount();
+        return fishingService.getFishCount();
+    }
+
+    @GetMapping("/fish/biggest")
+    public List<Fish> getBiggestFish(@RequestParam int k) {
+        return fishingService.getBiggestFish(k);
     }
 }
