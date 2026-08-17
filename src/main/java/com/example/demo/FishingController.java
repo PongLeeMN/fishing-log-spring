@@ -28,4 +28,20 @@ public class FishingController {
     public List<Fish> getBiggestFish(@RequestParam int k) {
         return fishingService.getBiggestFish(k);
     }
+
+    @GetMapping("fish/search")
+    public List<Fish> getSpeciesAtLake(@RequestParam String species, @RequestParam String lake) {
+        return fishingService.getSpeciesAtLake(species, lake);
+    }
+
+    @GetMapping("/fish/lake")
+    public List<Fish> getFishAtLake(@RequestParam String lake) {
+        return fishingService.getFishAtLake(lake);
+    }
+
+    @GetMapping("/fish/species")
+        public List<Fish> getSpecies(@RequestParam String species) {
+            return fishingService.getSpecies(species);
+        }
+
 }

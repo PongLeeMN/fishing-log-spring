@@ -39,4 +39,37 @@ public class FishingService {
         }
         return biggestFish;
     }
+
+    public List<Fish> getSpecies(String species) {
+        List<Fish> speciesList = new ArrayList<>();
+        for (Fish f : fishList) {
+            if (species.trim().equalsIgnoreCase(f.getSpecies())) {
+                speciesList.add(f);
+            }
+        }
+        return speciesList;
+    }
+
+    public List<Fish> getFishAtLake(String lake) {
+        List<Fish> fishAtLake = new ArrayList<>();
+
+        for (Fish f: fishList) {
+            if (f.getLake().trim().equalsIgnoreCase(lake.trim())) {
+                fishAtLake.add(f);
+            }
+        }
+        return fishAtLake;
+    }
+
+    public List<Fish> getSpeciesAtLake(String species, String lake) {
+        List<Fish> speciesList = getSpecies(species);
+        List<Fish> speciesAtLakeList = new ArrayList<>();
+
+        for (Fish f: speciesList) {
+            if (f.getLake().trim().equalsIgnoreCase(lake.trim())) {
+                speciesAtLakeList.add(f);
+            }
+        }
+        return speciesAtLakeList;
+    }
 }
