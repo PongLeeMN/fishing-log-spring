@@ -6,23 +6,23 @@ import java.util.*;
 
 @Service
 public class FishingService {
-    private final ArrayList<Fish> fishList = new ArrayList<>();
 
-    public FishingService() {
-        fishList.add(new Fish("Northern Pike", 3.2, "DeMontreville"));
-        fishList.add(new Fish("Bass", 4.7, "Oneka Lake"));
-        fishList.add(new Fish("Bluegill", 0.6, "DeMontreville"));
+    private final FishingRepository fishingRepository;
+
+    public FishingService(FishingRepository fishingRepository) {
+        this.fishingRepository = fishingRepository;
     }
 
     public List<Fish> getAllFish() {
-        return fishList;
+        return fishingRepository.findAll();
     }
 
-    public int getFishCount() {
-        return fishList.size();
+    public int getFishCount() {;
+        return fishingRepository.findAll().size();
     }
 
     public List<Fish> getBiggestFish(int k) {
+        List<Fish> fishList = fishingRepository.findAll();
         if (k > fishList.size()) {
             k = fishList.size();
         }
@@ -41,6 +41,7 @@ public class FishingService {
     }
 
     public List<Fish> getSpecies(String species) {
+        List<Fish> fishList = fishingRepository.findAll();
         List<Fish> speciesList = new ArrayList<>();
         for (Fish f : fishList) {
             if (species.trim().equalsIgnoreCase(f.getSpecies())) {
@@ -51,6 +52,7 @@ public class FishingService {
     }
 
     public List<Fish> getFishAtLake(String lake) {
+        List<Fish> fishList = fishingRepository.findAll();
         List<Fish> fishAtLake = new ArrayList<>();
 
         for (Fish f: fishList) {
