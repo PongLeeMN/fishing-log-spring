@@ -18,4 +18,9 @@ public class FishingRepository {
     public List<Fish> findAll(){
         return fishList;
     }
+
+    public Fish save(Fish fish) {
+        fishList.add(fish);
+        return fish;
+    }
 }

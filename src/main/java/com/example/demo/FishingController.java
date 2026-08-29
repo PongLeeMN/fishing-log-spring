@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class FishingController {
@@ -29,7 +31,7 @@ public class FishingController {
         return fishingService.getBiggestFish(k);
     }
 
-    @GetMapping("fish/search")
+    @GetMapping("/fish/search")
     public List<Fish> getSpeciesAtLake(@RequestParam String species, @RequestParam String lake) {
         return fishingService.getSpeciesAtLake(species, lake);
     }
@@ -43,5 +45,10 @@ public class FishingController {
         public List<Fish> getSpecies(@RequestParam String species) {
             return fishingService.getSpecies(species);
         }
+
+    @PostMapping("/fish")
+    public Fish addFish(@RequestBody Fish fish) {
+        return fishingService.addFish(fish);
+    }
 
 }

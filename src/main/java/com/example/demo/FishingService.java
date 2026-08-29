@@ -17,7 +17,7 @@ public class FishingService {
         return fishingRepository.findAll();
     }
 
-    public int getFishCount() {;
+    public int getFishCount() {
         return fishingRepository.findAll().size();
     }
 
@@ -73,5 +73,9 @@ public class FishingService {
             }
         }
         return speciesAtLakeList;
+    }
+
+    public Fish addFish(Fish fish) {
+        return fishingRepository.save(fish);
     }
 }

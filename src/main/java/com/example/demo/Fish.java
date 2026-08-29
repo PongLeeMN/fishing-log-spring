@@ -1,10 +1,12 @@
 package com.example.demo;
 
 public class Fish {
-    private final String species;
-    private final double weight;
-    private final String lake;
+    private String species;
+    private double weight;
+    private String lake;
 
+    public Fish() {
+    }
 
     public Fish(String species, double weight, String lake) {
         this.species = species;
@@ -12,20 +14,29 @@ public class Fish {
         this.lake = lake;
     }
 
-
-    // boiler plate
     public String getSpecies() {
         return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 
     public double getWeight() {
         return weight;
     }
 
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     public String getLake() {
         return lake;
     }
 
+    public void setLake(String lake) {
+        this.lake = lake;
+    }
 
     @Override
     public String toString() {
