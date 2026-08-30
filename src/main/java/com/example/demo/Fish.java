@@ -4,6 +4,7 @@ public class Fish {
     private String species;
     private double weight;
     private String lake;
+    private long id;
 
     public Fish() {
     }
@@ -36,6 +37,14 @@ public class Fish {
 
     public void setLake(String lake) {
         this.lake = lake;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override

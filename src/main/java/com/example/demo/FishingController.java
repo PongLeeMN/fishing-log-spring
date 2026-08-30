@@ -2,11 +2,8 @@ package com.example.demo;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FishingController {
@@ -49,6 +46,16 @@ public class FishingController {
     @PostMapping("/fish")
     public Fish addFish(@RequestBody Fish fish) {
         return fishingService.addFish(fish);
+    }
+
+    @DeleteMapping("/fish/{id}")
+    public ResponseEntity<Fish> deleteFish(@PathVariable long id) {
+        Fish deletedFish = fishingService.deleteFishById(id);
+        if (deletedFish == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(deletedFish);
     }
 
 }

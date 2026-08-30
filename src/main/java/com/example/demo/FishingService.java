@@ -78,4 +78,8 @@ public class FishingService {
     public Fish addFish(Fish fish) {
         return fishingRepository.save(fish);
     }
+
+    public Fish deleteFishById(long id) {
+        return fishingRepository.deleteFishById(id);
+    }
 }
