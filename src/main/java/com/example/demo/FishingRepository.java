@@ -36,4 +36,14 @@ public class FishingRepository {
         return null;
     }
 
+    public Fish updateFishById(long id, Fish fish) {
+        for (int i = fishList.size() - 1; i >= 0; i--) {
+            if (fishList.get(i).getId() == id) {
+                fish.setId(id);
+                fishList.set(i, fish);
+                return fish;
+            }
+        }
+        return null;
+    }
 }

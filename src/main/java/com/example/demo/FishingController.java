@@ -58,4 +58,15 @@ public class FishingController {
         return ResponseEntity.ok(deletedFish);
     }
 
+    @PutMapping ("/fish/{id}")
+    public ResponseEntity<Fish> updateFish(@PathVariable long id, @RequestBody Fish fish) {
+        Fish updatedFish = fishingService.updateFishById(id, fish);
+
+        if(updatedFish == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(updatedFish);
+    }
+
 }
