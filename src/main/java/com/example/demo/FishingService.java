@@ -82,4 +82,8 @@ public class FishingService {
     public Fish deleteFishById(long id) {
         return fishingRepository.deleteFishById(id);
     }
+
+    public Fish updateFishById(long id, Fish fish) {
+        return fishingRepository.updateFishById(id, fish);
+    }
 }
