@@ -17,8 +17,8 @@ public class FishingService {
         return fishingRepository.findAll();
     }
 
-    public int getFishCount() {
-        return fishingRepository.findAll().size();
+    public long getFishCount() {
+        return fishingRepository.count();
     }
 
     public List<Fish> getBiggestFish(int k) {
@@ -80,10 +80,22 @@ public class FishingService {
     }
 
     public Fish deleteFishById(long id) {
-        return fishingRepository.deleteFishById(id);
+        Optional<Fish> fish = fishingRepository.findById(id);
+
+        if(fish.isEmpty()) {
+            return null;
+        }
+        fishingRepository.deleteById(id);
+        return fish.get();
     }
 
     public Fish updateFishById(long id, Fish fish) {
-        return fishingRepository.updateFishById(id, fish);
+        Optional<Fish> existingFish = fishingRepository.findById(id);
+
+        if (existingFish.isEmpty()) {
+            return null;
+        }
+        fish.setId(id);
+        return fishingRepository.save(fish);
     }
 }

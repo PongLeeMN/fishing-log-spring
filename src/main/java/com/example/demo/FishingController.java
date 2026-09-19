@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class FishingController {
     }
 
     @GetMapping("/fish/count")
-    public int getFishCount() {
+    public long getFishCount() {
         return fishingService.getFishCount();
     }
 
@@ -44,7 +45,7 @@ public class FishingController {
         }
 
     @PostMapping("/fish")
-    public Fish addFish(@RequestBody Fish fish) {
+    public Fish addFish(@Valid @RequestBody Fish fish) {
         return fishingService.addFish(fish);
     }
 
