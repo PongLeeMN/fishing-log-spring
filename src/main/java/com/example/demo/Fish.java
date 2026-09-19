@@ -1,10 +1,20 @@
 package com.example.demo;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
+@Entity
 public class Fish {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
     private String species;
+    @Positive
     private double weight;
+    @NotBlank
     private String lake;
-    private long id;
 
     public Fish() {
     }
@@ -39,11 +49,11 @@ public class Fish {
         this.lake = lake;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
